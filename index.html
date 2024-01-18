@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations Demo</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h2>Array Operations Demo</h2>
+
+        <!-- (a) Searching and Sorting for Integer Elements -->
+        <div class="mt-4">
+            <h3>Integer Array Operations</h3>
+            <label for="integerArray">Enter integer elements (comma-separated): </label>
+            <input type="text" id="integerArray" class="form-control mb-3" placeholder="e.g., 5, 2, 8, 1, 7">
+
+            <button class="btn btn-primary" onclick="performIntegerOperations()">Perform Operations</button>
+
+            <div id="resultInteger" class="mt-3"></div>
+        </div>
+
+        <!-- (b) Managing Array of Named Entities -->
+        <div class="mt-4">
+            <h3>Named Entities Array</h3>
+            <label for="entityArray">Enter named entities (comma-separated): </label>
+            <input type="text" id="entityArray" class="form-control mb-3" placeholder="e.g., Apple, Microsoft, Google">
+
+            <button class="btn btn-success" onclick="manageNamedEntities()">Manage Entities</button>
+
+            <div id="resultEntities" class="mt-3"></div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        function performIntegerOperations() {
+            const inputArray = document.getElementById('integerArray').value.split(',').map(Number);
+
+            const sortedArray = inputArray.slice().sort((a, b) => a - b);
+            const searchValue = parseInt(prompt("Enter the value to search in the array:"));
+
+            const isValueFound = sortedArray.includes(searchValue);
+            const resultInteger = `Sorted Array: ${sortedArray.join(', ')}<br>
+                                   Search Value (${searchValue}) Found: ${isValueFound}`;
+
+            document.getElementById('resultInteger').innerHTML = resultInteger;
+        }
+
+        function manageNamedEntities() {
+            const entityArray = document.getElementById('entityArray').value.split(',');
+
+            // Assuming some operations on the named entities array
+            const uppercaseEntities = entityArray.map(entity => entity.toUpperCase());
+            const entityCount = entityArray.length;
+
+            const resultEntities = `Uppercase Entities: ${uppercaseEntities.join(', ')}<br>
+                                    Total Entities: ${entityCount}`;
+
+            document.getElementById('resultEntities').innerHTML = resultEntities;
+        }
+    </script>
+</body>
+
+</html>
